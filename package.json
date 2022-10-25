@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+   
   },
   "keywords": [],
   "author": "",
@@ -19,5 +20,8 @@
     "url": "https://github.com/vision2divinity/cy/issues"
   },
   "homepage": "https://github.com/vision2divinity/cy#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "mochawesome": "^7.1.3"
+  }
 }

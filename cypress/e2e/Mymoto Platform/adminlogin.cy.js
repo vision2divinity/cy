@@ -1,17 +1,20 @@
+/// <reference types="cypress" />
 Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false
-    });
+  return false;
+});
+
+import { adminlogin } from "../../PageObjects/login.cy";
+
+const admin=new adminlogin()
+
 describe("MyMoto App", () => {
-  it("AdecoreTuma", () => {
-    cy.visit("https://mymotolr.com/auth/signin");
-    cy.wait(3000)
-    cy.get("#formMobile").type("0556780200");
-    cy.contains('Sign in').click()
-    //the 20sec wait to is continue and click on recapcha manually 
-    cy.wait(30000)
-    //input the otp received manually 
-    cy.get('.custom-button').click()
+  it("Admin tries to login to the webapp", () => {
+   
+    admin.navigate("https://mymotolr.com/auth/signin");
+    admin.flag('.iti__selected-flag')
+    admin.gh('#iti-1__item-gh')
+    admin.formMobile('#formMobile')
+    admin.Signin('type=["submit"]')
+    admin.custom('.custom-button')
   });
 });

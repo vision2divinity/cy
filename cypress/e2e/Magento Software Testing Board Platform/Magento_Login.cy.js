@@ -1,22 +1,24 @@
-describe("MyMoto App", () => {
-  it("FormsSubmission", () => {
-    cy.visit("https://magento.softwaretestingboard.com/");
-    cy.wait(2000);
-    cy.get(".panel > .header > .authorization-link > a").click();
-    cy.wait(2000);
-    cy.reload()
-    cy.wait(2000);
-    cy.get("#email").type("roni_cost@example.com");
-    cy.wait(2000);
-    cy.get("#pass").type("roni_cost3@example.com");
-    cy.wait(2000);
-    cy.get(".action.login.primary").click();
-    cy.wait(2000);
-    cy.get("#email").type("roni_cost@example.com");
-    cy.wait(2000);
-    cy.get("#pass").type("roni_cost3@example.com");
-    cy.wait(10000);
-    //enter the recaptcha code on the site manually and wait for it to click
-    cy.get(".action.login.primary").click();
+import { Magento_Login } from "../../PageObjects/login.cy";
+
+const SignIn=new Magento_Login()
+
+describe("Magento Ecommerce Site", () => {
+  it("verify is user can login to magento", () => {
+    
+    SignIn.navigate('https://magento.softwaretestingboard.com/')
+    SignIn.Sign_In('.panel > .header > .authorization-link > a')
+    SignIn.email('#email')
+    SignIn.password('#pass')
+    SignIn.SignInButton('.action.login.primary')
+    
+    SignIn.email('#email')
+    SignIn.password('#pass')
+     //to actually proceed and continue you need to enter the recaptcha manually 
+     //and put wait time of 10s to enter it
+    SignIn.SignInButton('.action.login.primary')
+   
+
+    
   });
-});
+  
+})
